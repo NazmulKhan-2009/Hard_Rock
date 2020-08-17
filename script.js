@@ -6,10 +6,12 @@ const buttons=document.querySelectorAll(".author button");
 const lyric=document.querySelector(".lyric");
 var file=[]
 
+
+
 searchBtn.addEventListener('click',function(){
   
   const search = document.getElementById("search").value
-  document.querySelector(".titleSearch").style.display="block"
+  document.querySelector(".titleSearch").style.display = "block"
   fetch(`https://api.lyrics.ovh/suggest/${search}`)
   .then(res=>res.json())
   .then(data=>{ 
@@ -18,8 +20,8 @@ searchBtn.addEventListener('click',function(){
       artist=data.data[i].artist.name
       file.push(title)
       file.push(artist)
-      list[i].innerHTML=`${title}` 
-      para[i].innerHTML=`${artist}`
+      list[i].innerHTML=`${title} Album by` 
+      para[i].innerHTML=` ${artist}`
     }
     lyrics(data)
   })
